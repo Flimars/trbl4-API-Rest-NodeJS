@@ -4,7 +4,7 @@ import userRoutes from './routes/userRoutes.js';
 import todoRoutes from './routes/todoRoutes.js';
 import categoryRoutes from './routes/categoryRoutes.js';
 import swaggerUI from 'swagger-ui-express';
-import swaggerDocument from './swagger.json';
+import swaggerDocument from './swagger.json' assert { type: "json" };
 
 const NODE_ENV = process.env.NODE_ENV;
 if (NODE_ENV === 'development') {
