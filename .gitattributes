@@ -1,0 +1,8 @@
+# Configurar finais de linha para arquivos de texto
+* text=auto
+
+# Manter LF para arquivos JSON
+*.json text eol=lf
+
+# Manter CRLF para arquivos de script do Windows
+*.bat text eol=crlf
