@@ -3,6 +3,8 @@ import dotenv from 'dotenv';
 import userRoutes from './routes/userRoutes.js';
 import todoRoutes from './routes/todoRoutes.js';
 import categoryRoutes from './routes/categoryRoutes.js';
+import swaggerUI from 'swagger-ui-express';
+import swaggerDocument from './swagger.json';
 
 const NODE_ENV = process.env.NODE_ENV;
 if (NODE_ENV === 'development') {
@@ -25,5 +27,10 @@ app.use(express.json());
 app.use('/users', userRoutes);
 app.use('/todos', todoRoutes);
 app.use('/categories', categoryRoutes);
+
+// Swagger documentation
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
+
+
 
 export default app;
