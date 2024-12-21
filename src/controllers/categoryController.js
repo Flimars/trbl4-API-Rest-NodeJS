@@ -18,15 +18,23 @@ export const createCategory = async (req, res) => {
 };
 
 export const shareCategory = async (req, res) => {
-  const { categoryId, userId } = req.body;
+  let { categoryId, userId } = req.body; 
 
   try {
+    categoryId = parseInt(categoryId, 10);
+    userId = parseInt(userId, 10);
+
+    if (isNaN(categoryId) || isNaN(userId)) {
+      return res.status(400).json({ error: 'categoryId e userId devem ser números inteiros.' });
+    }
+
     const share = await prisma.share.create({
       data: { categoryId, userId },
     });
 
     res.status(201).json({ message: 'Categoria compartilhada!', share });
   } catch (error) {
+    console.error('Erro ao compartilhar categoria:', error); 
     res.status(500).json({ error: 'Erro ao compartilhar categoria.' });
   }
 };

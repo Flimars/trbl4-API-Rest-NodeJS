@@ -5,6 +5,7 @@ import todoRoutes from './routes/todoRoutes.js';
 import categoryRoutes from './routes/categoryRoutes.js';
 import swaggerUI from 'swagger-ui-express';
 import swaggerDocument from './swagger.json' assert { type: "json" };
+import swaggerSpec from './config/swaggerConfig.js';
 
 const NODE_ENV = process.env.NODE_ENV;
 if (NODE_ENV === 'development') {
@@ -20,7 +21,6 @@ console.log({
     APP_SECRET: process.env.APP_SECRET,
     HASH_SECRET: process.env.HASH_SECRET,
 })
-//inicializa o express
 const app = express();
 
 app.use(express.json());
@@ -28,9 +28,6 @@ app.use('/users', userRoutes);
 app.use('/todos', todoRoutes);
 app.use('/categories', categoryRoutes);
 
-// Swagger documentation
-app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
-
-
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerSpec));
 
 export default app;

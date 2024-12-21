@@ -1,35 +1,41 @@
 {
 	"info": {
-		"_postman_id": "fd711fdb-cb49-4f98-ac94-d05d08a684f2",
+		"_postman_id": "2c97b01d-c4ad-4d7b-ae64-53db8ef45663",
 		"name": "API REST NodeJS",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "22823384"
+		"_exporter_id": "40553790"
 	},
 	"item": [
 		{
 			"name": "todoRoutes",
 			"item": [
 				{
-					"name": "http://localhost:3000/",
+					"name": "http://localhost:3000/todos",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiZW1haWwiOiJhZmlsaWFkb2NhaW5hQGdtYWlsLmNvbSIsImlhdCI6MTczNDgxMjI2OCwiZXhwIjoxNzM0ODQxMDY4fQ.N2aS9j1vfdlVlJBXxZIuQ8LXeeTajajX2L7S-ZP32Vs",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "http://localhost:3000/",
+							"raw": "http://localhost:3000/todos",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
-								""
+								"todos"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "http://localhost:3000/:id/completed",
+					"name": "http://localhost:3000/todos/1/completed",
 					"request": {
 						"method": "PATCH",
 						"header": [],
@@ -55,13 +61,19 @@
 					"response": []
 				},
 				{
-					"name": "http://localhost:3000/",
+					"name": "http://localhost:3000/todos",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiZW1haWwiOiJhZmlsaWFkb2NhaW5hQGdtYWlsLmNvbSIsImlhdCI6MTczNDgxMjI2OCwiZXhwIjoxNzM0ODQxMDY4fQ.N2aS9j1vfdlVlJBXxZIuQ8LXeeTajajX2L7S-ZP32Vs",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"Criar as rotas\",\r\n    \"description\": \"???\",\r\n    \"dueDate\": \"new Date(dueDate)\",\r\n    \"userId\": \"req.user.id\",\r\n    \"categoryId\": \"???\"\r\n}",
+							"raw": "{\r\n    \"title\": \"Finalizar relatório\",\r\n    \"description\": \"Terminar o o trabalho de Node até domingo\",\r\n    \"dueDate\": \"2024-12-31T23:59:59.000Z\",\r\n    \"categoryId\": 3\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -69,14 +81,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/",
+							"raw": "http://localhost:3000/todos",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
-								""
+								"todos"
 							]
 						}
 					},
@@ -88,13 +100,35 @@
 			"name": "categoryRoutes",
 			"item": [
 				{
-					"name": "http://localhost:3000/share",
+					"name": "htpp:/localhost:3000/categories",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "BearereyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiZW1haWwiOiJhZmlsaWFkb2NhaW5hQGdtYWlsLmNvbSIsImlhdCI6MTczNDgwNjg5NCwiZXhwIjoxNzM0ODEwNDk0fQ.YoXe0Hq_pNp0w6-vE2Nb_ZIsCqPmp6dYZBLvSfOK8f8",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiZW1haWwiOiJhZmlsaWFkb2NhaW5hQGdtYWlsLmNvbSIsImlhdCI6MTczNDgxMjI2OCwiZXhwIjoxNzM0ODQxMDY4fQ.N2aS9j1vfdlVlJBXxZIuQ8LXeeTajajX2L7S-ZP32Vs",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"categoryId\": \"???\",\r\n    \"userId\": \"???\"\r\n   \r\n}",
+							"raw": "{\r\n    \"name\": \"Trabalho\"\r\n    \r\n   \r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -102,32 +136,51 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/share",
+							"raw": "http://localhost:3000/categories",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
-								"share"
+								"categories"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "http://localhost:3000/shared",
+					"name": "http://localhost:3000/categories",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiZW1haWwiOiJhZmlsaWFkb2NhaW5hQGdtYWlsLmNvbSIsImlhdCI6MTczNDgxMjI2OCwiZXhwIjoxNzM0ODQxMDY4fQ.N2aS9j1vfdlVlJBXxZIuQ8LXeeTajajX2L7S-ZP32Vs",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "http://localhost:3000/shared",
+							"raw": "http://localhost:3000/categories/shared",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
+								"categories",
 								"shared"
 							]
 						}
@@ -135,13 +188,19 @@
 					"response": []
 				},
 				{
-					"name": "http://localhost:3000/",
+					"name": "http://localhost:3000/categories/share",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiZW1haWwiOiJhZmlsaWFkb2NhaW5hQGdtYWlsLmNvbSIsImlhdCI6MTczNDgxMjI2OCwiZXhwIjoxNzM0ODQxMDY4fQ.N2aS9j1vfdlVlJBXxZIuQ8LXeeTajajX2L7S-ZP32Vs",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"name_category\",\r\n    \"userId\": \"???\"\r\n}",
+							"raw": "{\r\n    \"categoryId\":\"2\",\r\n    \"userId\": \"4\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -149,14 +208,15 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/",
+							"raw": "http://localhost:3000/categories/share",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
-								""
+								"categories",
+								"share"
 							]
 						}
 					},
@@ -168,7 +228,7 @@
 			"name": "userRoutes",
 			"item": [
 				{
-					"name": "http://localhost:3000/verify/:token",
+					"name": "http://localhost:3000/users/verify/:token",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -185,34 +245,29 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/verify/:token",
+							"raw": "http://localhost:3000/users/verify/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImtzYWxpbWFhYnJldTE5ODBAZ21haWwuY29tIiwiaWF0IjoxNzM0ODAzMDkyLCJleHAiOjE3MzQ4ODk0OTJ9.CD1LhVPt2l3NCSOVRUmPFJyEvgrhaieFvLceurWiewM",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
+								"users",
 								"verify",
-								":token"
-							],
-							"variable": [
-								{
-									"key": "token",
-									"value": ""
-								}
+								"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImtzYWxpbWFhYnJldTE5ODBAZ21haWwuY29tIiwiaWF0IjoxNzM0ODAzMDkyLCJleHAiOjE3MzQ4ODk0OTJ9.CD1LhVPt2l3NCSOVRUmPFJyEvgrhaieFvLceurWiewM"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "http://localhost:3000/register",
+					"name": "http://localhost:3000/users/register",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Katiane\",\r\n    \"email\": \"katiane4445@gmail.com\",\r\n    \"password\": \"hashedPassword\",\r\n    \"verified\": \"false\"\r\n}",
+							"raw": "{\r\n    \"name\": \"Katiane \",\r\n    \"email\": \"afiliadocaina@gmail.com\",\r\n    \"password\": \"123456\"\r\n    \r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -220,14 +275,73 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/register",
+							"raw": "http://localhost:3000/users/register",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
+								"users",
 								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/users/register Copy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"afiliadocaina@gmail.com\",\r\n    \"password\": \"123456\"\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/users/login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"afiliadocaina@gmail.com\",\r\n    \"password\": \"123456\"\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"login"
 							]
 						}
 					},
